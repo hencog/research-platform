@@ -2,10 +2,14 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/validate/jquery.validate.js"></script>
-<!--script src="http://localhost/chartjs/Chart.js"></script-->
+<!--script src="http://digitalbrain-test.lancs.ac.uk/chartjs/Chart.js"></script-->
 <script src="http://digitalbrain-test.lancs.ac.uk/chartjs/Chart.js"></script>
-
-
+<link rel="stylesheet" href="http://digitalbrain-test.lancs.ac.uk/datepicker/lib/themes/default.css" id="theme_base">
+<link rel="stylesheet" href="http://digitalbrain-test.lancs.ac.uk/datepicker/lib/themes/default.date.css" id="theme_date">
+<script src="http://digitalbrain-test.lancs.ac.uk/datepicker/lib/picker.js"></script>
+<script src="http://digitalbrain-test.lancs.ac.uk/datepicker/lib/picker.date.js"></script>
+<script src="http://digitalbrain-test.lancs.ac.uk/datepicker/lib/picker.time.js"></script>
+<script src="http://digitalbrain-test.lancs.ac.uk/datepicker/lib/legacy.js"></script>
 
 <script>
 
@@ -156,8 +160,8 @@ color:#333333;
     //echo $experimentid;
     
     // Create a connection
-    $connection = mysql_connect("localhost", "root", "") or die(mysql_error());
-    //$connection = mysql_connect("localhost", "urashid", "password") or die(mysql_error());
+    //$connection = mysql_connect("localhost", "root", "") or die(mysql_error());
+    $connection = mysql_connect("http://digitalbrain-test.lancs.ac.uk", "urashid", "password") or die(mysql_error());
     
     //Select database
     mysql_select_db("wordpress", $connection) or die(mysql_error());
@@ -172,7 +176,6 @@ color:#333333;
     
     //echo "experimentid="+$experimentid;
     ?>
-
 
 <table>
 
@@ -272,7 +275,31 @@ color:#333333;
 <?php
     
     }
+if($row['type'] == 'switches'){
+
+?>
+<div class="alert alert-info alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Pick a date to view the amount of switches you made.</strong></br>You must have our chrome extension installed !!LINK!!
+</div>
+<input id='datepicker' placeholder="Choose a date" type="text"></input><input type='hidden' name="variable[]" id='switchCount'></input><h2><span id='switches'><span></h2>
+<script>
+    $('#datepicker').pickadate({
+        format: 'mm/dd/yyyy',
+         onSet: function(context) {
+            d = $('#datepicker').val();
+            $.post("http://digitalbrain-test.lancs.ac.uk/wp-includes/chrome-extension/getSwitchesCount.php", {user_id: <?php echo get_current_user_id(); ?>, date: d}, function(response) {
+              $('#switchCount').val(response);
+              $('#switches').html(response);
+              console.log(response);
+            });
+        }
+    });
+
+
     
+</script>
+<?php }     
     
     ?>
 
@@ -700,3 +727,4 @@ var myLine = new Chart(  $("#my-canvas").get(0).getContext("2d")  ).Line(lineCha
 ?>
 
 <?php endif; ?><!-- end  (is_user_logged_in() && bp_experiment_is_member() ) -->
+

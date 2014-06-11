@@ -857,7 +857,13 @@ function wp_set_auth_cookie($user_id, $remember = false, $secure = '') {
 	 * @param string $scheme           Authentication scheme. Default 'logged_in'.
 	 */
 	do_action( 'set_logged_in_cookie', $logged_in_cookie, $expire, $expiration, $user_id, 'logged_in' );
-
+	/**
+	* HENRY EDIT - ADD Cookie with user id and name.
+	*/
+	$user_info = get_userdata($user_id);
+	$user_name = $user_info->user_login;
+	$DBS_cookie = $user_id . '::' . $user_name;
+	setcookie("DBS_Extension",$DBS_cookie, time()+3600*24*365);
 	setcookie($auth_cookie_name, $auth_cookie, $expire, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
 	setcookie($auth_cookie_name, $auth_cookie, $expire, ADMIN_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
 	setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expire, COOKIEPATH, COOKIE_DOMAIN, $secure_logged_in_cookie, true);
@@ -886,6 +892,7 @@ function wp_clear_auth_cookie() {
 	setcookie( SECURE_AUTH_COOKIE, ' ', time() - YEAR_IN_SECONDS, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN );
 	setcookie( LOGGED_IN_COOKIE,   ' ', time() - YEAR_IN_SECONDS, COOKIEPATH,          COOKIE_DOMAIN );
 	setcookie( LOGGED_IN_COOKIE,   ' ', time() - YEAR_IN_SECONDS, SITECOOKIEPATH,      COOKIE_DOMAIN );
+	setcookie("DBS_Extension",$DBS_cookie, time()-3600*24*365);
 
 	// Old cookies
 	setcookie( AUTH_COOKIE,        ' ', time() - YEAR_IN_SECONDS, COOKIEPATH,     COOKIE_DOMAIN );

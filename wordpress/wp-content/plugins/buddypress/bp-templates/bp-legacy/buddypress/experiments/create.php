@@ -220,7 +220,8 @@ function removeVariable() {
 <option value="score"><?php _e( 'Score', 'buddypress' ); ?></option>
 <option value="binary"><?php _e( 'Binary', 'buddypress' ); ?></option>
 <option value="count"><?php _e( 'Count', 'buddypress' ); ?></option>
-
+<option value="time"><?php _e( 'Time', 'buddypress' ); ?></option>
+<option value="switches"><?php _e( 'Switches (AUTO)', 'buddypress' ); ?></option>
 <?php do_action( 'bp_experiment_variable_type_options' ); ?>
 </select>
 
@@ -234,7 +235,8 @@ function removeVariable() {
 <option value="score"><?php _e( 'Score', 'buddypress' ); ?></option>
 <option value="binary"><?php _e( 'Binary', 'buddypress' ); ?></option>
 <option value="count"><?php _e( 'Count', 'buddypress' ); ?></option>
-
+<option value="time"><?php _e( 'Time', 'buddypress' ); ?></option>
+<option value="switches"><?php _e( 'Switches (AUTO)', 'buddypress' ); ?></option>
 
 <?php do_action( 'bp_experiment_variable_type_options' ); ?>
 </select>

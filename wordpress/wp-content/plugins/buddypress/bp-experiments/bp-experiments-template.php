@@ -543,7 +543,7 @@ function bp_experiment_avatar( $args = '' ) {
 		extract( $r, EXTR_SKIP );
 
 		/* Fetch the avatar from the folder, if not provide backwards compat. */
-		if ( !$avatar = bp_core_fetch_avatar( array( 'item_id' => $experiments_template->experiment->id, 'object' => 'experiment', 'type' => $type, 'avatar_dir' => 'experiment-avatars', 'alt' => $alt, 'css_id' => $id, 'class' => $class, 'width' => $width, 'height' => $height, 'title' => $experiments_template->experiment->name, 'alt' => $alt ) ) )
+		if ( !$avatar = bp_core_fetch_avatar( array( 'item_id' => $experiments_template->experiment->id, 'object' => 'experiment', 'type' => $type, 'avatar_dir' => 'experiment-avatars', 'alt' => $alt, 'css_id' => $id, 'html' => false, 'class' => $class, 'width' => $width, 'height' => $height, 'title' => $experiments_template->experiment->name, 'alt' => $alt ) ) )
 			$avatar = '<img src="' . esc_url( $experiments_template->experiment->avatar_thumb ) . '" class="avatar" alt="' . esc_attr( $experiments_template->experiment->name ) . '" />';
 
 		return apply_filters( 'bp_get_experiment_avatar', $avatar );

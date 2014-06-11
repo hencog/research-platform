@@ -1515,6 +1515,113 @@ body.register #buddypress div.page ul {
 }
 
 /*--------------------------------------------------------------
+3.12 - DBS Edit - Experiments
+--------------------------------------------------------------*/
+.experiment{
+	width:250px;
+}
+
+.dbs-item{
+	padding:5px;
+	height:100px;
+	max-height: 100px;
+	background-color:#13a4d2;
+	color:white;
+	text-transform:uppercase;
+}
+.dbs-balloon{
+	padding:5px;
+	background-color:#13a4d2;
+	color:white;
+	text-transform:uppercase;
+}
+.dbs-item-top{
+	background-image:url('http://localhost/wp-content/plugins/buddypress/bp-templates/bp-legacy/buddypress/experiments/images/callout.jpg');
+	background-position: center;
+	height:7px;
+	top:-7px;
+	width:100%;
+	background-repeat: no-repeat;
+}
+.dbs-item-title a{
+	font-size:1em;
+	line-height: 0.8em;
+	margin:0px;
+	color:white;
+}
+.dbs-item-title a:hover{
+	text-decoration: none;
+	color:#9fdcef;
+}
+.no-padding{
+	padding:2px !important;
+}
+
+.dbs-item-avatar {
+    display: inline-block;
+    background:black;
+    padding: 0;
+    width:100%;
+    height:250px;
+    background-size: 100%;
+    background-position: center center;
+    transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    
+    transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+    
+    transition-property: background-size, background-position, opacity;
+    -o-transition-property: background-size, background-position, opacity;
+    -ms-transition-property: background-size, background-position, opacity;
+    -moz-transition-property: background-size, background-position, opacity;
+    -webkit-transition-property: background-size, background-position;
+}
+.dbs-item-avatar div.dbs-item-desc{
+	width:100%;
+	height:100%;
+	padding:5px;
+	visibility:hidden;
+}
+.dbs-item-avatar:hover {
+	background-color:#222222;
+    background-size: 110%;
+}
+.dbs-item-avatar:hover div.dbs-item-desc{
+	visibility:visible;
+	background-color: rgba(0,0,0,0.5);
+}
+.dbs-item-avatar:hover div.dbs-item-desc p{
+	color:#ddd;
+	font-size: 0.9em;
+	text-align: center;
+}
+.dbs-meta{
+	font-size: 0.7em;
+}
+ul#experiments-list li{
+	border: 0px;
+	padding:0px !important;
+}
+
+@media (max-width: 1200px) {
+.dbs-item-avatar {height:175px}
+}
+@media (max-width: 800px) {
+	.dbs-item-avatar {height:160px}
+	ul#experiments-list li{
+		border: 0px;
+		padding-top:20px !important
+	};
+}
+
+/*--------------------------------------------------------------
 4.0 - Media Queries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
