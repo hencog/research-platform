@@ -2858,7 +2858,7 @@ function bp_directory_experiments_search_form() {
 
 	$search_form_html = '<form action="" method="get" id="search-experiments-form">
 		<label><input type="text" name="s" id="experiments_search" placeholder="'. esc_attr( $search_value ) .'" /></label>
-		<input type="submit" id="experiments_search_submit" name="experiments_search_submit" value="'. __( 'Search', 'buddypress' ) .'" />
+		<input type="submit" id="experiments_search_submit" class="search _button" name="experiments_search_submit" value="'. __( 'Search', 'buddypress' ) .'" />
 	</form>';
 
 	echo apply_filters( 'bp_directory_experiments_search_form', $search_form_html );
